@@ -1,0 +1,8 @@
+{
+  "elements": {},
+  "imports": [
+    "package:photo_manager/photo_manager.dart",
+    "package:media_watch_tasks/src/interfaces/media_scanner.dart",
+    "package:media_watch_tasks/src/models/media_asset.dart"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "elements": {},
+  "imports": [
+    "package:media_watch_tasks/src/interfaces/task_store.dart",
+    "package:media_watch_tasks/src/models/task_models.dart",
+    "package:media_watch_tasks/src/utils/time.dart",
+    "package:media_watch_tasks/src/impl/drift/drift_database.dart",
+    "package:drift/drift.dart"
+  ]
+}

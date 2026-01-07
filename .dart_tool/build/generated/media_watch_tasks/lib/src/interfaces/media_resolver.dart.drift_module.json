@@ -1,0 +1,6 @@
+{
+  "elements": {},
+  "imports": [
+    "package:media_watch_tasks/src/models/resolved_media.dart"
+  ]
+}

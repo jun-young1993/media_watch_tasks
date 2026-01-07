@@ -1,0 +1,1 @@
+{"valid_import":true,"imports":[{"uri":"package:photo_manager/photo_manager.dart","transitive":false},{"uri":"package:media_watch_tasks/src/interfaces/media_resolver.dart","transitive":false},{"uri":"package:media_watch_tasks/src/models/resolved_media.dart","transitive":false}],"elements":[]}

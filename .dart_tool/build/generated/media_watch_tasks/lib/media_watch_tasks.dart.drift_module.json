@@ -1,0 +1,23 @@
+{
+  "elements": {},
+  "imports": [
+    "package:media_watch_tasks/src/models/media_asset.dart",
+    "package:media_watch_tasks/src/models/resolved_media.dart",
+    "package:media_watch_tasks/src/models/task_models.dart",
+    "package:media_watch_tasks/src/models/task_options.dart",
+    "package:media_watch_tasks/src/interfaces/media_scanner.dart",
+    "package:media_watch_tasks/src/interfaces/media_resolver.dart",
+    "package:media_watch_tasks/src/interfaces/media_state_store.dart",
+    "package:media_watch_tasks/src/interfaces/task_store.dart",
+    "package:media_watch_tasks/src/interfaces/uploader.dart",
+    "package:media_watch_tasks/src/interfaces/scheduler.dart",
+    "package:media_watch_tasks/src/interfaces/logger.dart",
+    "package:media_watch_tasks/src/task_manager.dart",
+    "package:media_watch_tasks/src/impl/photo_manager/photo_manager_scanner.dart",
+    "package:media_watch_tasks/src/impl/photo_manager/photo_manager_resolver.dart",
+    "package:media_watch_tasks/src/impl/drift/drift_database.dart",
+    "package:media_watch_tasks/src/impl/drift/drift_media_state_store.dart",
+    "package:media_watch_tasks/src/impl/drift/drift_task_store.dart",
+    "package:media_watch_tasks/src/impl/background_fetch/background_fetch_scheduler.dart"
+  ]
+}

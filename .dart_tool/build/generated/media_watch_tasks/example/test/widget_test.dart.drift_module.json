@@ -1,0 +1,8 @@
+{
+  "elements": {},
+  "imports": [
+    "package:flutter/material.dart",
+    "package:flutter_test/flutter_test.dart",
+    "package:media_watch_tasks_example/main.dart"
+  ]
+}

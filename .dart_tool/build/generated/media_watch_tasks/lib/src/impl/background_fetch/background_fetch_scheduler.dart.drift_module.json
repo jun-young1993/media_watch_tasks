@@ -1,0 +1,8 @@
+{
+  "elements": {},
+  "imports": [
+    "package:background_fetch/background_fetch.dart",
+    "package:media_watch_tasks/src/interfaces/logger.dart",
+    "package:media_watch_tasks/src/interfaces/scheduler.dart"
+  ]
+}

@@ -1,0 +1,1693 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'drift_database.dart';
+
+// ignore_for_file: type=lint
+class $AppMetaTable extends AppMeta with TableInfo<$AppMetaTable, AppMetaData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $AppMetaTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _keyMeta = const VerificationMeta('key');
+  @override
+  late final GeneratedColumn<String> key = GeneratedColumn<String>(
+      'key', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _valueMeta = const VerificationMeta('value');
+  @override
+  late final GeneratedColumn<String> value = GeneratedColumn<String>(
+      'value', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [key, value];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'app_meta';
+  @override
+  VerificationContext validateIntegrity(Insertable<AppMetaData> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('key')) {
+      context.handle(
+          _keyMeta, key.isAcceptableOrUnknown(data['key']!, _keyMeta));
+    } else if (isInserting) {
+      context.missing(_keyMeta);
+    }
+    if (data.containsKey('value')) {
+      context.handle(
+          _valueMeta, value.isAcceptableOrUnknown(data['value']!, _valueMeta));
+    } else if (isInserting) {
+      context.missing(_valueMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {key};
+  @override
+  AppMetaData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return AppMetaData(
+      key: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}key'])!,
+      value: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}value'])!,
+    );
+  }
+
+  @override
+  $AppMetaTable createAlias(String alias) {
+    return $AppMetaTable(attachedDatabase, alias);
+  }
+}
+
+class AppMetaData extends DataClass implements Insertable<AppMetaData> {
+  final String key;
+  final String value;
+  const AppMetaData({required this.key, required this.value});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['key'] = Variable<String>(key);
+    map['value'] = Variable<String>(value);
+    return map;
+  }
+
+  AppMetaCompanion toCompanion(bool nullToAbsent) {
+    return AppMetaCompanion(
+      key: Value(key),
+      value: Value(value),
+    );
+  }
+
+  factory AppMetaData.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return AppMetaData(
+      key: serializer.fromJson<String>(json['key']),
+      value: serializer.fromJson<String>(json['value']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'key': serializer.toJson<String>(key),
+      'value': serializer.toJson<String>(value),
+    };
+  }
+
+  AppMetaData copyWith({String? key, String? value}) => AppMetaData(
+        key: key ?? this.key,
+        value: value ?? this.value,
+      );
+  AppMetaData copyWithCompanion(AppMetaCompanion data) {
+    return AppMetaData(
+      key: data.key.present ? data.key.value : this.key,
+      value: data.value.present ? data.value.value : this.value,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AppMetaData(')
+          ..write('key: $key, ')
+          ..write('value: $value')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(key, value);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is AppMetaData &&
+          other.key == this.key &&
+          other.value == this.value);
+}
+
+class AppMetaCompanion extends UpdateCompanion<AppMetaData> {
+  final Value<String> key;
+  final Value<String> value;
+  final Value<int> rowid;
+  const AppMetaCompanion({
+    this.key = const Value.absent(),
+    this.value = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  AppMetaCompanion.insert({
+    required String key,
+    required String value,
+    this.rowid = const Value.absent(),
+  })  : key = Value(key),
+        value = Value(value);
+  static Insertable<AppMetaData> custom({
+    Expression<String>? key,
+    Expression<String>? value,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (key != null) 'key': key,
+      if (value != null) 'value': value,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  AppMetaCompanion copyWith(
+      {Value<String>? key, Value<String>? value, Value<int>? rowid}) {
+    return AppMetaCompanion(
+      key: key ?? this.key,
+      value: value ?? this.value,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (key.present) {
+      map['key'] = Variable<String>(key.value);
+    }
+    if (value.present) {
+      map['value'] = Variable<String>(value.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AppMetaCompanion(')
+          ..write('key: $key, ')
+          ..write('value: $value, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $MediaStatesTable extends MediaStates
+    with TableInfo<$MediaStatesTable, MediaState> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $MediaStatesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _assetIdMeta =
+      const VerificationMeta('assetId');
+  @override
+  late final GeneratedColumn<String> assetId = GeneratedColumn<String>(
+      'asset_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _createdAtMsUtcMeta =
+      const VerificationMeta('createdAtMsUtc');
+  @override
+  late final GeneratedColumn<int> createdAtMsUtc = GeneratedColumn<int>(
+      'created_at_ms_utc', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  static const VerificationMeta _hashMeta = const VerificationMeta('hash');
+  @override
+  late final GeneratedColumn<String> hash = GeneratedColumn<String>(
+      'hash', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _uploadedMeta =
+      const VerificationMeta('uploaded');
+  @override
+  late final GeneratedColumn<bool> uploaded = GeneratedColumn<bool>(
+      'uploaded', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('CHECK ("uploaded" IN (0, 1))'),
+      defaultValue: const Constant(false));
+  static const VerificationMeta _firstSeenAtMsUtcMeta =
+      const VerificationMeta('firstSeenAtMsUtc');
+  @override
+  late final GeneratedColumn<int> firstSeenAtMsUtc = GeneratedColumn<int>(
+      'first_seen_at_ms_utc', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  static const VerificationMeta _uploadedAtMsUtcMeta =
+      const VerificationMeta('uploadedAtMsUtc');
+  @override
+  late final GeneratedColumn<int> uploadedAtMsUtc = GeneratedColumn<int>(
+      'uploaded_at_ms_utc', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  @override
+  List<GeneratedColumn> get $columns => [
+        assetId,
+        createdAtMsUtc,
+        hash,
+        uploaded,
+        firstSeenAtMsUtc,
+        uploadedAtMsUtc
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'media_states';
+  @override
+  VerificationContext validateIntegrity(Insertable<MediaState> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('asset_id')) {
+      context.handle(_assetIdMeta,
+          assetId.isAcceptableOrUnknown(data['asset_id']!, _assetIdMeta));
+    } else if (isInserting) {
+      context.missing(_assetIdMeta);
+    }
+    if (data.containsKey('created_at_ms_utc')) {
+      context.handle(
+          _createdAtMsUtcMeta,
+          createdAtMsUtc.isAcceptableOrUnknown(
+              data['created_at_ms_utc']!, _createdAtMsUtcMeta));
+    } else if (isInserting) {
+      context.missing(_createdAtMsUtcMeta);
+    }
+    if (data.containsKey('hash')) {
+      context.handle(
+          _hashMeta, hash.isAcceptableOrUnknown(data['hash']!, _hashMeta));
+    }
+    if (data.containsKey('uploaded')) {
+      context.handle(_uploadedMeta,
+          uploaded.isAcceptableOrUnknown(data['uploaded']!, _uploadedMeta));
+    }
+    if (data.containsKey('first_seen_at_ms_utc')) {
+      context.handle(
+          _firstSeenAtMsUtcMeta,
+          firstSeenAtMsUtc.isAcceptableOrUnknown(
+              data['first_seen_at_ms_utc']!, _firstSeenAtMsUtcMeta));
+    } else if (isInserting) {
+      context.missing(_firstSeenAtMsUtcMeta);
+    }
+    if (data.containsKey('uploaded_at_ms_utc')) {
+      context.handle(
+          _uploadedAtMsUtcMeta,
+          uploadedAtMsUtc.isAcceptableOrUnknown(
+              data['uploaded_at_ms_utc']!, _uploadedAtMsUtcMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {assetId};
+  @override
+  List<Set<GeneratedColumn>> get uniqueKeys => [
+        {hash},
+      ];
+  @override
+  MediaState map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return MediaState(
+      assetId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}asset_id'])!,
+      createdAtMsUtc: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}created_at_ms_utc'])!,
+      hash: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}hash']),
+      uploaded: attachedDatabase.typeMapping
+          .read(DriftSqlType.bool, data['${effectivePrefix}uploaded'])!,
+      firstSeenAtMsUtc: attachedDatabase.typeMapping.read(
+          DriftSqlType.int, data['${effectivePrefix}first_seen_at_ms_utc'])!,
+      uploadedAtMsUtc: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}uploaded_at_ms_utc']),
+    );
+  }
+
+  @override
+  $MediaStatesTable createAlias(String alias) {
+    return $MediaStatesTable(attachedDatabase, alias);
+  }
+}
+
+class MediaState extends DataClass implements Insertable<MediaState> {
+  final String assetId;
+  final int createdAtMsUtc;
+  final String? hash;
+  final bool uploaded;
+  final int firstSeenAtMsUtc;
+  final int? uploadedAtMsUtc;
+  const MediaState(
+      {required this.assetId,
+      required this.createdAtMsUtc,
+      this.hash,
+      required this.uploaded,
+      required this.firstSeenAtMsUtc,
+      this.uploadedAtMsUtc});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['asset_id'] = Variable<String>(assetId);
+    map['created_at_ms_utc'] = Variable<int>(createdAtMsUtc);
+    if (!nullToAbsent || hash != null) {
+      map['hash'] = Variable<String>(hash);
+    }
+    map['uploaded'] = Variable<bool>(uploaded);
+    map['first_seen_at_ms_utc'] = Variable<int>(firstSeenAtMsUtc);
+    if (!nullToAbsent || uploadedAtMsUtc != null) {
+      map['uploaded_at_ms_utc'] = Variable<int>(uploadedAtMsUtc);
+    }
+    return map;
+  }
+
+  MediaStatesCompanion toCompanion(bool nullToAbsent) {
+    return MediaStatesCompanion(
+      assetId: Value(assetId),
+      createdAtMsUtc: Value(createdAtMsUtc),
+      hash: hash == null && nullToAbsent ? const Value.absent() : Value(hash),
+      uploaded: Value(uploaded),
+      firstSeenAtMsUtc: Value(firstSeenAtMsUtc),
+      uploadedAtMsUtc: uploadedAtMsUtc == null && nullToAbsent
+          ? const Value.absent()
+          : Value(uploadedAtMsUtc),
+    );
+  }
+
+  factory MediaState.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return MediaState(
+      assetId: serializer.fromJson<String>(json['assetId']),
+      createdAtMsUtc: serializer.fromJson<int>(json['createdAtMsUtc']),
+      hash: serializer.fromJson<String?>(json['hash']),
+      uploaded: serializer.fromJson<bool>(json['uploaded']),
+      firstSeenAtMsUtc: serializer.fromJson<int>(json['firstSeenAtMsUtc']),
+      uploadedAtMsUtc: serializer.fromJson<int?>(json['uploadedAtMsUtc']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'assetId': serializer.toJson<String>(assetId),
+      'createdAtMsUtc': serializer.toJson<int>(createdAtMsUtc),
+      'hash': serializer.toJson<String?>(hash),
+      'uploaded': serializer.toJson<bool>(uploaded),
+      'firstSeenAtMsUtc': serializer.toJson<int>(firstSeenAtMsUtc),
+      'uploadedAtMsUtc': serializer.toJson<int?>(uploadedAtMsUtc),
+    };
+  }
+
+  MediaState copyWith(
+          {String? assetId,
+          int? createdAtMsUtc,
+          Value<String?> hash = const Value.absent(),
+          bool? uploaded,
+          int? firstSeenAtMsUtc,
+          Value<int?> uploadedAtMsUtc = const Value.absent()}) =>
+      MediaState(
+        assetId: assetId ?? this.assetId,
+        createdAtMsUtc: createdAtMsUtc ?? this.createdAtMsUtc,
+        hash: hash.present ? hash.value : this.hash,
+        uploaded: uploaded ?? this.uploaded,
+        firstSeenAtMsUtc: firstSeenAtMsUtc ?? this.firstSeenAtMsUtc,
+        uploadedAtMsUtc: uploadedAtMsUtc.present
+            ? uploadedAtMsUtc.value
+            : this.uploadedAtMsUtc,
+      );
+  MediaState copyWithCompanion(MediaStatesCompanion data) {
+    return MediaState(
+      assetId: data.assetId.present ? data.assetId.value : this.assetId,
+      createdAtMsUtc: data.createdAtMsUtc.present
+          ? data.createdAtMsUtc.value
+          : this.createdAtMsUtc,
+      hash: data.hash.present ? data.hash.value : this.hash,
+      uploaded: data.uploaded.present ? data.uploaded.value : this.uploaded,
+      firstSeenAtMsUtc: data.firstSeenAtMsUtc.present
+          ? data.firstSeenAtMsUtc.value
+          : this.firstSeenAtMsUtc,
+      uploadedAtMsUtc: data.uploadedAtMsUtc.present
+          ? data.uploadedAtMsUtc.value
+          : this.uploadedAtMsUtc,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('MediaState(')
+          ..write('assetId: $assetId, ')
+          ..write('createdAtMsUtc: $createdAtMsUtc, ')
+          ..write('hash: $hash, ')
+          ..write('uploaded: $uploaded, ')
+          ..write('firstSeenAtMsUtc: $firstSeenAtMsUtc, ')
+          ..write('uploadedAtMsUtc: $uploadedAtMsUtc')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(assetId, createdAtMsUtc, hash, uploaded,
+      firstSeenAtMsUtc, uploadedAtMsUtc);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is MediaState &&
+          other.assetId == this.assetId &&
+          other.createdAtMsUtc == this.createdAtMsUtc &&
+          other.hash == this.hash &&
+          other.uploaded == this.uploaded &&
+          other.firstSeenAtMsUtc == this.firstSeenAtMsUtc &&
+          other.uploadedAtMsUtc == this.uploadedAtMsUtc);
+}
+
+class MediaStatesCompanion extends UpdateCompanion<MediaState> {
+  final Value<String> assetId;
+  final Value<int> createdAtMsUtc;
+  final Value<String?> hash;
+  final Value<bool> uploaded;
+  final Value<int> firstSeenAtMsUtc;
+  final Value<int?> uploadedAtMsUtc;
+  final Value<int> rowid;
+  const MediaStatesCompanion({
+    this.assetId = const Value.absent(),
+    this.createdAtMsUtc = const Value.absent(),
+    this.hash = const Value.absent(),
+    this.uploaded = const Value.absent(),
+    this.firstSeenAtMsUtc = const Value.absent(),
+    this.uploadedAtMsUtc = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  MediaStatesCompanion.insert({
+    required String assetId,
+    required int createdAtMsUtc,
+    this.hash = const Value.absent(),
+    this.uploaded = const Value.absent(),
+    required int firstSeenAtMsUtc,
+    this.uploadedAtMsUtc = const Value.absent(),
+    this.rowid = const Value.absent(),
+  })  : assetId = Value(assetId),
+        createdAtMsUtc = Value(createdAtMsUtc),
+        firstSeenAtMsUtc = Value(firstSeenAtMsUtc);
+  static Insertable<MediaState> custom({
+    Expression<String>? assetId,
+    Expression<int>? createdAtMsUtc,
+    Expression<String>? hash,
+    Expression<bool>? uploaded,
+    Expression<int>? firstSeenAtMsUtc,
+    Expression<int>? uploadedAtMsUtc,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (assetId != null) 'asset_id': assetId,
+      if (createdAtMsUtc != null) 'created_at_ms_utc': createdAtMsUtc,
+      if (hash != null) 'hash': hash,
+      if (uploaded != null) 'uploaded': uploaded,
+      if (firstSeenAtMsUtc != null) 'first_seen_at_ms_utc': firstSeenAtMsUtc,
+      if (uploadedAtMsUtc != null) 'uploaded_at_ms_utc': uploadedAtMsUtc,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  MediaStatesCompanion copyWith(
+      {Value<String>? assetId,
+      Value<int>? createdAtMsUtc,
+      Value<String?>? hash,
+      Value<bool>? uploaded,
+      Value<int>? firstSeenAtMsUtc,
+      Value<int?>? uploadedAtMsUtc,
+      Value<int>? rowid}) {
+    return MediaStatesCompanion(
+      assetId: assetId ?? this.assetId,
+      createdAtMsUtc: createdAtMsUtc ?? this.createdAtMsUtc,
+      hash: hash ?? this.hash,
+      uploaded: uploaded ?? this.uploaded,
+      firstSeenAtMsUtc: firstSeenAtMsUtc ?? this.firstSeenAtMsUtc,
+      uploadedAtMsUtc: uploadedAtMsUtc ?? this.uploadedAtMsUtc,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (assetId.present) {
+      map['asset_id'] = Variable<String>(assetId.value);
+    }
+    if (createdAtMsUtc.present) {
+      map['created_at_ms_utc'] = Variable<int>(createdAtMsUtc.value);
+    }
+    if (hash.present) {
+      map['hash'] = Variable<String>(hash.value);
+    }
+    if (uploaded.present) {
+      map['uploaded'] = Variable<bool>(uploaded.value);
+    }
+    if (firstSeenAtMsUtc.present) {
+      map['first_seen_at_ms_utc'] = Variable<int>(firstSeenAtMsUtc.value);
+    }
+    if (uploadedAtMsUtc.present) {
+      map['uploaded_at_ms_utc'] = Variable<int>(uploadedAtMsUtc.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('MediaStatesCompanion(')
+          ..write('assetId: $assetId, ')
+          ..write('createdAtMsUtc: $createdAtMsUtc, ')
+          ..write('hash: $hash, ')
+          ..write('uploaded: $uploaded, ')
+          ..write('firstSeenAtMsUtc: $firstSeenAtMsUtc, ')
+          ..write('uploadedAtMsUtc: $uploadedAtMsUtc, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $UploadTaskRowsTable extends UploadTaskRows
+    with TableInfo<$UploadTaskRowsTable, UploadTaskRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $UploadTaskRowsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _assetIdMeta =
+      const VerificationMeta('assetId');
+  @override
+  late final GeneratedColumn<String> assetId = GeneratedColumn<String>(
+      'asset_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _createdAtMsUtcMeta =
+      const VerificationMeta('createdAtMsUtc');
+  @override
+  late final GeneratedColumn<int> createdAtMsUtc = GeneratedColumn<int>(
+      'created_at_ms_utc', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<String> status = GeneratedColumn<String>(
+      'status', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('pending'));
+  static const VerificationMeta _retryCountMeta =
+      const VerificationMeta('retryCount');
+  @override
+  late final GeneratedColumn<int> retryCount = GeneratedColumn<int>(
+      'retry_count', aliasedName, false,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultValue: const Constant(0));
+  static const VerificationMeta _nextRunAtMsUtcMeta =
+      const VerificationMeta('nextRunAtMsUtc');
+  @override
+  late final GeneratedColumn<int> nextRunAtMsUtc = GeneratedColumn<int>(
+      'next_run_at_ms_utc', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _lockedAtMsUtcMeta =
+      const VerificationMeta('lockedAtMsUtc');
+  @override
+  late final GeneratedColumn<int> lockedAtMsUtc = GeneratedColumn<int>(
+      'locked_at_ms_utc', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _lockIdMeta = const VerificationMeta('lockId');
+  @override
+  late final GeneratedColumn<String> lockId = GeneratedColumn<String>(
+      'lock_id', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _lastErrorMeta =
+      const VerificationMeta('lastError');
+  @override
+  late final GeneratedColumn<String> lastError = GeneratedColumn<String>(
+      'last_error', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _updatedAtMsUtcMeta =
+      const VerificationMeta('updatedAtMsUtc');
+  @override
+  late final GeneratedColumn<int> updatedAtMsUtc = GeneratedColumn<int>(
+      'updated_at_ms_utc', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        assetId,
+        createdAtMsUtc,
+        status,
+        retryCount,
+        nextRunAtMsUtc,
+        lockedAtMsUtc,
+        lockId,
+        lastError,
+        updatedAtMsUtc
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'upload_task_rows';
+  @override
+  VerificationContext validateIntegrity(Insertable<UploadTaskRow> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('asset_id')) {
+      context.handle(_assetIdMeta,
+          assetId.isAcceptableOrUnknown(data['asset_id']!, _assetIdMeta));
+    } else if (isInserting) {
+      context.missing(_assetIdMeta);
+    }
+    if (data.containsKey('created_at_ms_utc')) {
+      context.handle(
+          _createdAtMsUtcMeta,
+          createdAtMsUtc.isAcceptableOrUnknown(
+              data['created_at_ms_utc']!, _createdAtMsUtcMeta));
+    } else if (isInserting) {
+      context.missing(_createdAtMsUtcMeta);
+    }
+    if (data.containsKey('status')) {
+      context.handle(_statusMeta,
+          status.isAcceptableOrUnknown(data['status']!, _statusMeta));
+    }
+    if (data.containsKey('retry_count')) {
+      context.handle(
+          _retryCountMeta,
+          retryCount.isAcceptableOrUnknown(
+              data['retry_count']!, _retryCountMeta));
+    }
+    if (data.containsKey('next_run_at_ms_utc')) {
+      context.handle(
+          _nextRunAtMsUtcMeta,
+          nextRunAtMsUtc.isAcceptableOrUnknown(
+              data['next_run_at_ms_utc']!, _nextRunAtMsUtcMeta));
+    }
+    if (data.containsKey('locked_at_ms_utc')) {
+      context.handle(
+          _lockedAtMsUtcMeta,
+          lockedAtMsUtc.isAcceptableOrUnknown(
+              data['locked_at_ms_utc']!, _lockedAtMsUtcMeta));
+    }
+    if (data.containsKey('lock_id')) {
+      context.handle(_lockIdMeta,
+          lockId.isAcceptableOrUnknown(data['lock_id']!, _lockIdMeta));
+    }
+    if (data.containsKey('last_error')) {
+      context.handle(_lastErrorMeta,
+          lastError.isAcceptableOrUnknown(data['last_error']!, _lastErrorMeta));
+    }
+    if (data.containsKey('updated_at_ms_utc')) {
+      context.handle(
+          _updatedAtMsUtcMeta,
+          updatedAtMsUtc.isAcceptableOrUnknown(
+              data['updated_at_ms_utc']!, _updatedAtMsUtcMeta));
+    } else if (isInserting) {
+      context.missing(_updatedAtMsUtcMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  List<Set<GeneratedColumn>> get uniqueKeys => [
+        {assetId},
+      ];
+  @override
+  UploadTaskRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return UploadTaskRow(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      assetId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}asset_id'])!,
+      createdAtMsUtc: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}created_at_ms_utc'])!,
+      status: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}status'])!,
+      retryCount: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}retry_count'])!,
+      nextRunAtMsUtc: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}next_run_at_ms_utc']),
+      lockedAtMsUtc: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}locked_at_ms_utc']),
+      lockId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}lock_id']),
+      lastError: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}last_error']),
+      updatedAtMsUtc: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}updated_at_ms_utc'])!,
+    );
+  }
+
+  @override
+  $UploadTaskRowsTable createAlias(String alias) {
+    return $UploadTaskRowsTable(attachedDatabase, alias);
+  }
+}
+
+class UploadTaskRow extends DataClass implements Insertable<UploadTaskRow> {
+  final int id;
+  final String assetId;
+  final int createdAtMsUtc;
+
+  /// 'pending' | 'uploading' | 'success' | 'failed'
+  final String status;
+  final int retryCount;
+  final int? nextRunAtMsUtc;
+  final int? lockedAtMsUtc;
+  final String? lockId;
+  final String? lastError;
+  final int updatedAtMsUtc;
+  const UploadTaskRow(
+      {required this.id,
+      required this.assetId,
+      required this.createdAtMsUtc,
+      required this.status,
+      required this.retryCount,
+      this.nextRunAtMsUtc,
+      this.lockedAtMsUtc,
+      this.lockId,
+      this.lastError,
+      required this.updatedAtMsUtc});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['asset_id'] = Variable<String>(assetId);
+    map['created_at_ms_utc'] = Variable<int>(createdAtMsUtc);
+    map['status'] = Variable<String>(status);
+    map['retry_count'] = Variable<int>(retryCount);
+    if (!nullToAbsent || nextRunAtMsUtc != null) {
+      map['next_run_at_ms_utc'] = Variable<int>(nextRunAtMsUtc);
+    }
+    if (!nullToAbsent || lockedAtMsUtc != null) {
+      map['locked_at_ms_utc'] = Variable<int>(lockedAtMsUtc);
+    }
+    if (!nullToAbsent || lockId != null) {
+      map['lock_id'] = Variable<String>(lockId);
+    }
+    if (!nullToAbsent || lastError != null) {
+      map['last_error'] = Variable<String>(lastError);
+    }
+    map['updated_at_ms_utc'] = Variable<int>(updatedAtMsUtc);
+    return map;
+  }
+
+  UploadTaskRowsCompanion toCompanion(bool nullToAbsent) {
+    return UploadTaskRowsCompanion(
+      id: Value(id),
+      assetId: Value(assetId),
+      createdAtMsUtc: Value(createdAtMsUtc),
+      status: Value(status),
+      retryCount: Value(retryCount),
+      nextRunAtMsUtc: nextRunAtMsUtc == null && nullToAbsent
+          ? const Value.absent()
+          : Value(nextRunAtMsUtc),
+      lockedAtMsUtc: lockedAtMsUtc == null && nullToAbsent
+          ? const Value.absent()
+          : Value(lockedAtMsUtc),
+      lockId:
+          lockId == null && nullToAbsent ? const Value.absent() : Value(lockId),
+      lastError: lastError == null && nullToAbsent
+          ? const Value.absent()
+          : Value(lastError),
+      updatedAtMsUtc: Value(updatedAtMsUtc),
+    );
+  }
+
+  factory UploadTaskRow.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return UploadTaskRow(
+      id: serializer.fromJson<int>(json['id']),
+      assetId: serializer.fromJson<String>(json['assetId']),
+      createdAtMsUtc: serializer.fromJson<int>(json['createdAtMsUtc']),
+      status: serializer.fromJson<String>(json['status']),
+      retryCount: serializer.fromJson<int>(json['retryCount']),
+      nextRunAtMsUtc: serializer.fromJson<int?>(json['nextRunAtMsUtc']),
+      lockedAtMsUtc: serializer.fromJson<int?>(json['lockedAtMsUtc']),
+      lockId: serializer.fromJson<String?>(json['lockId']),
+      lastError: serializer.fromJson<String?>(json['lastError']),
+      updatedAtMsUtc: serializer.fromJson<int>(json['updatedAtMsUtc']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'assetId': serializer.toJson<String>(assetId),
+      'createdAtMsUtc': serializer.toJson<int>(createdAtMsUtc),
+      'status': serializer.toJson<String>(status),
+      'retryCount': serializer.toJson<int>(retryCount),
+      'nextRunAtMsUtc': serializer.toJson<int?>(nextRunAtMsUtc),
+      'lockedAtMsUtc': serializer.toJson<int?>(lockedAtMsUtc),
+      'lockId': serializer.toJson<String?>(lockId),
+      'lastError': serializer.toJson<String?>(lastError),
+      'updatedAtMsUtc': serializer.toJson<int>(updatedAtMsUtc),
+    };
+  }
+
+  UploadTaskRow copyWith(
+          {int? id,
+          String? assetId,
+          int? createdAtMsUtc,
+          String? status,
+          int? retryCount,
+          Value<int?> nextRunAtMsUtc = const Value.absent(),
+          Value<int?> lockedAtMsUtc = const Value.absent(),
+          Value<String?> lockId = const Value.absent(),
+          Value<String?> lastError = const Value.absent(),
+          int? updatedAtMsUtc}) =>
+      UploadTaskRow(
+        id: id ?? this.id,
+        assetId: assetId ?? this.assetId,
+        createdAtMsUtc: createdAtMsUtc ?? this.createdAtMsUtc,
+        status: status ?? this.status,
+        retryCount: retryCount ?? this.retryCount,
+        nextRunAtMsUtc:
+            nextRunAtMsUtc.present ? nextRunAtMsUtc.value : this.nextRunAtMsUtc,
+        lockedAtMsUtc:
+            lockedAtMsUtc.present ? lockedAtMsUtc.value : this.lockedAtMsUtc,
+        lockId: lockId.present ? lockId.value : this.lockId,
+        lastError: lastError.present ? lastError.value : this.lastError,
+        updatedAtMsUtc: updatedAtMsUtc ?? this.updatedAtMsUtc,
+      );
+  UploadTaskRow copyWithCompanion(UploadTaskRowsCompanion data) {
+    return UploadTaskRow(
+      id: data.id.present ? data.id.value : this.id,
+      assetId: data.assetId.present ? data.assetId.value : this.assetId,
+      createdAtMsUtc: data.createdAtMsUtc.present
+          ? data.createdAtMsUtc.value
+          : this.createdAtMsUtc,
+      status: data.status.present ? data.status.value : this.status,
+      retryCount:
+          data.retryCount.present ? data.retryCount.value : this.retryCount,
+      nextRunAtMsUtc: data.nextRunAtMsUtc.present
+          ? data.nextRunAtMsUtc.value
+          : this.nextRunAtMsUtc,
+      lockedAtMsUtc: data.lockedAtMsUtc.present
+          ? data.lockedAtMsUtc.value
+          : this.lockedAtMsUtc,
+      lockId: data.lockId.present ? data.lockId.value : this.lockId,
+      lastError: data.lastError.present ? data.lastError.value : this.lastError,
+      updatedAtMsUtc: data.updatedAtMsUtc.present
+          ? data.updatedAtMsUtc.value
+          : this.updatedAtMsUtc,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('UploadTaskRow(')
+          ..write('id: $id, ')
+          ..write('assetId: $assetId, ')
+          ..write('createdAtMsUtc: $createdAtMsUtc, ')
+          ..write('status: $status, ')
+          ..write('retryCount: $retryCount, ')
+          ..write('nextRunAtMsUtc: $nextRunAtMsUtc, ')
+          ..write('lockedAtMsUtc: $lockedAtMsUtc, ')
+          ..write('lockId: $lockId, ')
+          ..write('lastError: $lastError, ')
+          ..write('updatedAtMsUtc: $updatedAtMsUtc')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      id,
+      assetId,
+      createdAtMsUtc,
+      status,
+      retryCount,
+      nextRunAtMsUtc,
+      lockedAtMsUtc,
+      lockId,
+      lastError,
+      updatedAtMsUtc);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is UploadTaskRow &&
+          other.id == this.id &&
+          other.assetId == this.assetId &&
+          other.createdAtMsUtc == this.createdAtMsUtc &&
+          other.status == this.status &&
+          other.retryCount == this.retryCount &&
+          other.nextRunAtMsUtc == this.nextRunAtMsUtc &&
+          other.lockedAtMsUtc == this.lockedAtMsUtc &&
+          other.lockId == this.lockId &&
+          other.lastError == this.lastError &&
+          other.updatedAtMsUtc == this.updatedAtMsUtc);
+}
+
+class UploadTaskRowsCompanion extends UpdateCompanion<UploadTaskRow> {
+  final Value<int> id;
+  final Value<String> assetId;
+  final Value<int> createdAtMsUtc;
+  final Value<String> status;
+  final Value<int> retryCount;
+  final Value<int?> nextRunAtMsUtc;
+  final Value<int?> lockedAtMsUtc;
+  final Value<String?> lockId;
+  final Value<String?> lastError;
+  final Value<int> updatedAtMsUtc;
+  const UploadTaskRowsCompanion({
+    this.id = const Value.absent(),
+    this.assetId = const Value.absent(),
+    this.createdAtMsUtc = const Value.absent(),
+    this.status = const Value.absent(),
+    this.retryCount = const Value.absent(),
+    this.nextRunAtMsUtc = const Value.absent(),
+    this.lockedAtMsUtc = const Value.absent(),
+    this.lockId = const Value.absent(),
+    this.lastError = const Value.absent(),
+    this.updatedAtMsUtc = const Value.absent(),
+  });
+  UploadTaskRowsCompanion.insert({
+    this.id = const Value.absent(),
+    required String assetId,
+    required int createdAtMsUtc,
+    this.status = const Value.absent(),
+    this.retryCount = const Value.absent(),
+    this.nextRunAtMsUtc = const Value.absent(),
+    this.lockedAtMsUtc = const Value.absent(),
+    this.lockId = const Value.absent(),
+    this.lastError = const Value.absent(),
+    required int updatedAtMsUtc,
+  })  : assetId = Value(assetId),
+        createdAtMsUtc = Value(createdAtMsUtc),
+        updatedAtMsUtc = Value(updatedAtMsUtc);
+  static Insertable<UploadTaskRow> custom({
+    Expression<int>? id,
+    Expression<String>? assetId,
+    Expression<int>? createdAtMsUtc,
+    Expression<String>? status,
+    Expression<int>? retryCount,
+    Expression<int>? nextRunAtMsUtc,
+    Expression<int>? lockedAtMsUtc,
+    Expression<String>? lockId,
+    Expression<String>? lastError,
+    Expression<int>? updatedAtMsUtc,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (assetId != null) 'asset_id': assetId,
+      if (createdAtMsUtc != null) 'created_at_ms_utc': createdAtMsUtc,
+      if (status != null) 'status': status,
+      if (retryCount != null) 'retry_count': retryCount,
+      if (nextRunAtMsUtc != null) 'next_run_at_ms_utc': nextRunAtMsUtc,
+      if (lockedAtMsUtc != null) 'locked_at_ms_utc': lockedAtMsUtc,
+      if (lockId != null) 'lock_id': lockId,
+      if (lastError != null) 'last_error': lastError,
+      if (updatedAtMsUtc != null) 'updated_at_ms_utc': updatedAtMsUtc,
+    });
+  }
+
+  UploadTaskRowsCompanion copyWith(
+      {Value<int>? id,
+      Value<String>? assetId,
+      Value<int>? createdAtMsUtc,
+      Value<String>? status,
+      Value<int>? retryCount,
+      Value<int?>? nextRunAtMsUtc,
+      Value<int?>? lockedAtMsUtc,
+      Value<String?>? lockId,
+      Value<String?>? lastError,
+      Value<int>? updatedAtMsUtc}) {
+    return UploadTaskRowsCompanion(
+      id: id ?? this.id,
+      assetId: assetId ?? this.assetId,
+      createdAtMsUtc: createdAtMsUtc ?? this.createdAtMsUtc,
+      status: status ?? this.status,
+      retryCount: retryCount ?? this.retryCount,
+      nextRunAtMsUtc: nextRunAtMsUtc ?? this.nextRunAtMsUtc,
+      lockedAtMsUtc: lockedAtMsUtc ?? this.lockedAtMsUtc,
+      lockId: lockId ?? this.lockId,
+      lastError: lastError ?? this.lastError,
+      updatedAtMsUtc: updatedAtMsUtc ?? this.updatedAtMsUtc,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (assetId.present) {
+      map['asset_id'] = Variable<String>(assetId.value);
+    }
+    if (createdAtMsUtc.present) {
+      map['created_at_ms_utc'] = Variable<int>(createdAtMsUtc.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<String>(status.value);
+    }
+    if (retryCount.present) {
+      map['retry_count'] = Variable<int>(retryCount.value);
+    }
+    if (nextRunAtMsUtc.present) {
+      map['next_run_at_ms_utc'] = Variable<int>(nextRunAtMsUtc.value);
+    }
+    if (lockedAtMsUtc.present) {
+      map['locked_at_ms_utc'] = Variable<int>(lockedAtMsUtc.value);
+    }
+    if (lockId.present) {
+      map['lock_id'] = Variable<String>(lockId.value);
+    }
+    if (lastError.present) {
+      map['last_error'] = Variable<String>(lastError.value);
+    }
+    if (updatedAtMsUtc.present) {
+      map['updated_at_ms_utc'] = Variable<int>(updatedAtMsUtc.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('UploadTaskRowsCompanion(')
+          ..write('id: $id, ')
+          ..write('assetId: $assetId, ')
+          ..write('createdAtMsUtc: $createdAtMsUtc, ')
+          ..write('status: $status, ')
+          ..write('retryCount: $retryCount, ')
+          ..write('nextRunAtMsUtc: $nextRunAtMsUtc, ')
+          ..write('lockedAtMsUtc: $lockedAtMsUtc, ')
+          ..write('lockId: $lockId, ')
+          ..write('lastError: $lastError, ')
+          ..write('updatedAtMsUtc: $updatedAtMsUtc')
+          ..write(')'))
+        .toString();
+  }
+}
+
+abstract class _$MediaWatchDatabase extends GeneratedDatabase {
+  _$MediaWatchDatabase(QueryExecutor e) : super(e);
+  $MediaWatchDatabaseManager get managers => $MediaWatchDatabaseManager(this);
+  late final $AppMetaTable appMeta = $AppMetaTable(this);
+  late final $MediaStatesTable mediaStates = $MediaStatesTable(this);
+  late final $UploadTaskRowsTable uploadTaskRows = $UploadTaskRowsTable(this);
+  @override
+  Iterable<TableInfo<Table, Object?>> get allTables =>
+      allSchemaEntities.whereType<TableInfo<Table, Object?>>();
+  @override
+  List<DatabaseSchemaEntity> get allSchemaEntities =>
+      [appMeta, mediaStates, uploadTaskRows];
+}
+
+typedef $$AppMetaTableCreateCompanionBuilder = AppMetaCompanion Function({
+  required String key,
+  required String value,
+  Value<int> rowid,
+});
+typedef $$AppMetaTableUpdateCompanionBuilder = AppMetaCompanion Function({
+  Value<String> key,
+  Value<String> value,
+  Value<int> rowid,
+});
+
+class $$AppMetaTableFilterComposer
+    extends Composer<_$MediaWatchDatabase, $AppMetaTable> {
+  $$AppMetaTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get key => $composableBuilder(
+      column: $table.key, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get value => $composableBuilder(
+      column: $table.value, builder: (column) => ColumnFilters(column));
+}
+
+class $$AppMetaTableOrderingComposer
+    extends Composer<_$MediaWatchDatabase, $AppMetaTable> {
+  $$AppMetaTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get key => $composableBuilder(
+      column: $table.key, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get value => $composableBuilder(
+      column: $table.value, builder: (column) => ColumnOrderings(column));
+}
+
+class $$AppMetaTableAnnotationComposer
+    extends Composer<_$MediaWatchDatabase, $AppMetaTable> {
+  $$AppMetaTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get key =>
+      $composableBuilder(column: $table.key, builder: (column) => column);
+
+  GeneratedColumn<String> get value =>
+      $composableBuilder(column: $table.value, builder: (column) => column);
+}
+
+class $$AppMetaTableTableManager extends RootTableManager<
+    _$MediaWatchDatabase,
+    $AppMetaTable,
+    AppMetaData,
+    $$AppMetaTableFilterComposer,
+    $$AppMetaTableOrderingComposer,
+    $$AppMetaTableAnnotationComposer,
+    $$AppMetaTableCreateCompanionBuilder,
+    $$AppMetaTableUpdateCompanionBuilder,
+    (
+      AppMetaData,
+      BaseReferences<_$MediaWatchDatabase, $AppMetaTable, AppMetaData>
+    ),
+    AppMetaData,
+    PrefetchHooks Function()> {
+  $$AppMetaTableTableManager(_$MediaWatchDatabase db, $AppMetaTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$AppMetaTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$AppMetaTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$AppMetaTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<String> key = const Value.absent(),
+            Value<String> value = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              AppMetaCompanion(
+            key: key,
+            value: value,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String key,
+            required String value,
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              AppMetaCompanion.insert(
+            key: key,
+            value: value,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$AppMetaTableProcessedTableManager = ProcessedTableManager<
+    _$MediaWatchDatabase,
+    $AppMetaTable,
+    AppMetaData,
+    $$AppMetaTableFilterComposer,
+    $$AppMetaTableOrderingComposer,
+    $$AppMetaTableAnnotationComposer,
+    $$AppMetaTableCreateCompanionBuilder,
+    $$AppMetaTableUpdateCompanionBuilder,
+    (
+      AppMetaData,
+      BaseReferences<_$MediaWatchDatabase, $AppMetaTable, AppMetaData>
+    ),
+    AppMetaData,
+    PrefetchHooks Function()>;
+typedef $$MediaStatesTableCreateCompanionBuilder = MediaStatesCompanion
+    Function({
+  required String assetId,
+  required int createdAtMsUtc,
+  Value<String?> hash,
+  Value<bool> uploaded,
+  required int firstSeenAtMsUtc,
+  Value<int?> uploadedAtMsUtc,
+  Value<int> rowid,
+});
+typedef $$MediaStatesTableUpdateCompanionBuilder = MediaStatesCompanion
+    Function({
+  Value<String> assetId,
+  Value<int> createdAtMsUtc,
+  Value<String?> hash,
+  Value<bool> uploaded,
+  Value<int> firstSeenAtMsUtc,
+  Value<int?> uploadedAtMsUtc,
+  Value<int> rowid,
+});
+
+class $$MediaStatesTableFilterComposer
+    extends Composer<_$MediaWatchDatabase, $MediaStatesTable> {
+  $$MediaStatesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get assetId => $composableBuilder(
+      column: $table.assetId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get createdAtMsUtc => $composableBuilder(
+      column: $table.createdAtMsUtc,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get hash => $composableBuilder(
+      column: $table.hash, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<bool> get uploaded => $composableBuilder(
+      column: $table.uploaded, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get firstSeenAtMsUtc => $composableBuilder(
+      column: $table.firstSeenAtMsUtc,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get uploadedAtMsUtc => $composableBuilder(
+      column: $table.uploadedAtMsUtc,
+      builder: (column) => ColumnFilters(column));
+}
+
+class $$MediaStatesTableOrderingComposer
+    extends Composer<_$MediaWatchDatabase, $MediaStatesTable> {
+  $$MediaStatesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get assetId => $composableBuilder(
+      column: $table.assetId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get createdAtMsUtc => $composableBuilder(
+      column: $table.createdAtMsUtc,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get hash => $composableBuilder(
+      column: $table.hash, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<bool> get uploaded => $composableBuilder(
+      column: $table.uploaded, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get firstSeenAtMsUtc => $composableBuilder(
+      column: $table.firstSeenAtMsUtc,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get uploadedAtMsUtc => $composableBuilder(
+      column: $table.uploadedAtMsUtc,
+      builder: (column) => ColumnOrderings(column));
+}
+
+class $$MediaStatesTableAnnotationComposer
+    extends Composer<_$MediaWatchDatabase, $MediaStatesTable> {
+  $$MediaStatesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get assetId =>
+      $composableBuilder(column: $table.assetId, builder: (column) => column);
+
+  GeneratedColumn<int> get createdAtMsUtc => $composableBuilder(
+      column: $table.createdAtMsUtc, builder: (column) => column);
+
+  GeneratedColumn<String> get hash =>
+      $composableBuilder(column: $table.hash, builder: (column) => column);
+
+  GeneratedColumn<bool> get uploaded =>
+      $composableBuilder(column: $table.uploaded, builder: (column) => column);
+
+  GeneratedColumn<int> get firstSeenAtMsUtc => $composableBuilder(
+      column: $table.firstSeenAtMsUtc, builder: (column) => column);
+
+  GeneratedColumn<int> get uploadedAtMsUtc => $composableBuilder(
+      column: $table.uploadedAtMsUtc, builder: (column) => column);
+}
+
+class $$MediaStatesTableTableManager extends RootTableManager<
+    _$MediaWatchDatabase,
+    $MediaStatesTable,
+    MediaState,
+    $$MediaStatesTableFilterComposer,
+    $$MediaStatesTableOrderingComposer,
+    $$MediaStatesTableAnnotationComposer,
+    $$MediaStatesTableCreateCompanionBuilder,
+    $$MediaStatesTableUpdateCompanionBuilder,
+    (
+      MediaState,
+      BaseReferences<_$MediaWatchDatabase, $MediaStatesTable, MediaState>
+    ),
+    MediaState,
+    PrefetchHooks Function()> {
+  $$MediaStatesTableTableManager(
+      _$MediaWatchDatabase db, $MediaStatesTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$MediaStatesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$MediaStatesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$MediaStatesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<String> assetId = const Value.absent(),
+            Value<int> createdAtMsUtc = const Value.absent(),
+            Value<String?> hash = const Value.absent(),
+            Value<bool> uploaded = const Value.absent(),
+            Value<int> firstSeenAtMsUtc = const Value.absent(),
+            Value<int?> uploadedAtMsUtc = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              MediaStatesCompanion(
+            assetId: assetId,
+            createdAtMsUtc: createdAtMsUtc,
+            hash: hash,
+            uploaded: uploaded,
+            firstSeenAtMsUtc: firstSeenAtMsUtc,
+            uploadedAtMsUtc: uploadedAtMsUtc,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String assetId,
+            required int createdAtMsUtc,
+            Value<String?> hash = const Value.absent(),
+            Value<bool> uploaded = const Value.absent(),
+            required int firstSeenAtMsUtc,
+            Value<int?> uploadedAtMsUtc = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              MediaStatesCompanion.insert(
+            assetId: assetId,
+            createdAtMsUtc: createdAtMsUtc,
+            hash: hash,
+            uploaded: uploaded,
+            firstSeenAtMsUtc: firstSeenAtMsUtc,
+            uploadedAtMsUtc: uploadedAtMsUtc,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$MediaStatesTableProcessedTableManager = ProcessedTableManager<
+    _$MediaWatchDatabase,
+    $MediaStatesTable,
+    MediaState,
+    $$MediaStatesTableFilterComposer,
+    $$MediaStatesTableOrderingComposer,
+    $$MediaStatesTableAnnotationComposer,
+    $$MediaStatesTableCreateCompanionBuilder,
+    $$MediaStatesTableUpdateCompanionBuilder,
+    (
+      MediaState,
+      BaseReferences<_$MediaWatchDatabase, $MediaStatesTable, MediaState>
+    ),
+    MediaState,
+    PrefetchHooks Function()>;
+typedef $$UploadTaskRowsTableCreateCompanionBuilder = UploadTaskRowsCompanion
+    Function({
+  Value<int> id,
+  required String assetId,
+  required int createdAtMsUtc,
+  Value<String> status,
+  Value<int> retryCount,
+  Value<int?> nextRunAtMsUtc,
+  Value<int?> lockedAtMsUtc,
+  Value<String?> lockId,
+  Value<String?> lastError,
+  required int updatedAtMsUtc,
+});
+typedef $$UploadTaskRowsTableUpdateCompanionBuilder = UploadTaskRowsCompanion
+    Function({
+  Value<int> id,
+  Value<String> assetId,
+  Value<int> createdAtMsUtc,
+  Value<String> status,
+  Value<int> retryCount,
+  Value<int?> nextRunAtMsUtc,
+  Value<int?> lockedAtMsUtc,
+  Value<String?> lockId,
+  Value<String?> lastError,
+  Value<int> updatedAtMsUtc,
+});
+
+class $$UploadTaskRowsTableFilterComposer
+    extends Composer<_$MediaWatchDatabase, $UploadTaskRowsTable> {
+  $$UploadTaskRowsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get assetId => $composableBuilder(
+      column: $table.assetId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get createdAtMsUtc => $composableBuilder(
+      column: $table.createdAtMsUtc,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get status => $composableBuilder(
+      column: $table.status, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get retryCount => $composableBuilder(
+      column: $table.retryCount, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get nextRunAtMsUtc => $composableBuilder(
+      column: $table.nextRunAtMsUtc,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get lockedAtMsUtc => $composableBuilder(
+      column: $table.lockedAtMsUtc, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get lockId => $composableBuilder(
+      column: $table.lockId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get lastError => $composableBuilder(
+      column: $table.lastError, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get updatedAtMsUtc => $composableBuilder(
+      column: $table.updatedAtMsUtc,
+      builder: (column) => ColumnFilters(column));
+}
+
+class $$UploadTaskRowsTableOrderingComposer
+    extends Composer<_$MediaWatchDatabase, $UploadTaskRowsTable> {
+  $$UploadTaskRowsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get assetId => $composableBuilder(
+      column: $table.assetId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get createdAtMsUtc => $composableBuilder(
+      column: $table.createdAtMsUtc,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get status => $composableBuilder(
+      column: $table.status, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get retryCount => $composableBuilder(
+      column: $table.retryCount, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get nextRunAtMsUtc => $composableBuilder(
+      column: $table.nextRunAtMsUtc,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get lockedAtMsUtc => $composableBuilder(
+      column: $table.lockedAtMsUtc,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get lockId => $composableBuilder(
+      column: $table.lockId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get lastError => $composableBuilder(
+      column: $table.lastError, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get updatedAtMsUtc => $composableBuilder(
+      column: $table.updatedAtMsUtc,
+      builder: (column) => ColumnOrderings(column));
+}
+
+class $$UploadTaskRowsTableAnnotationComposer
+    extends Composer<_$MediaWatchDatabase, $UploadTaskRowsTable> {
+  $$UploadTaskRowsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get assetId =>
+      $composableBuilder(column: $table.assetId, builder: (column) => column);
+
+  GeneratedColumn<int> get createdAtMsUtc => $composableBuilder(
+      column: $table.createdAtMsUtc, builder: (column) => column);
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<int> get retryCount => $composableBuilder(
+      column: $table.retryCount, builder: (column) => column);
+
+  GeneratedColumn<int> get nextRunAtMsUtc => $composableBuilder(
+      column: $table.nextRunAtMsUtc, builder: (column) => column);
+
+  GeneratedColumn<int> get lockedAtMsUtc => $composableBuilder(
+      column: $table.lockedAtMsUtc, builder: (column) => column);
+
+  GeneratedColumn<String> get lockId =>
+      $composableBuilder(column: $table.lockId, builder: (column) => column);
+
+  GeneratedColumn<String> get lastError =>
+      $composableBuilder(column: $table.lastError, builder: (column) => column);
+
+  GeneratedColumn<int> get updatedAtMsUtc => $composableBuilder(
+      column: $table.updatedAtMsUtc, builder: (column) => column);
+}
+
+class $$UploadTaskRowsTableTableManager extends RootTableManager<
+    _$MediaWatchDatabase,
+    $UploadTaskRowsTable,
+    UploadTaskRow,
+    $$UploadTaskRowsTableFilterComposer,
+    $$UploadTaskRowsTableOrderingComposer,
+    $$UploadTaskRowsTableAnnotationComposer,
+    $$UploadTaskRowsTableCreateCompanionBuilder,
+    $$UploadTaskRowsTableUpdateCompanionBuilder,
+    (
+      UploadTaskRow,
+      BaseReferences<_$MediaWatchDatabase, $UploadTaskRowsTable, UploadTaskRow>
+    ),
+    UploadTaskRow,
+    PrefetchHooks Function()> {
+  $$UploadTaskRowsTableTableManager(
+      _$MediaWatchDatabase db, $UploadTaskRowsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$UploadTaskRowsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$UploadTaskRowsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$UploadTaskRowsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String> assetId = const Value.absent(),
+            Value<int> createdAtMsUtc = const Value.absent(),
+            Value<String> status = const Value.absent(),
+            Value<int> retryCount = const Value.absent(),
+            Value<int?> nextRunAtMsUtc = const Value.absent(),
+            Value<int?> lockedAtMsUtc = const Value.absent(),
+            Value<String?> lockId = const Value.absent(),
+            Value<String?> lastError = const Value.absent(),
+            Value<int> updatedAtMsUtc = const Value.absent(),
+          }) =>
+              UploadTaskRowsCompanion(
+            id: id,
+            assetId: assetId,
+            createdAtMsUtc: createdAtMsUtc,
+            status: status,
+            retryCount: retryCount,
+            nextRunAtMsUtc: nextRunAtMsUtc,
+            lockedAtMsUtc: lockedAtMsUtc,
+            lockId: lockId,
+            lastError: lastError,
+            updatedAtMsUtc: updatedAtMsUtc,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required String assetId,
+            required int createdAtMsUtc,
+            Value<String> status = const Value.absent(),
+            Value<int> retryCount = const Value.absent(),
+            Value<int?> nextRunAtMsUtc = const Value.absent(),
+            Value<int?> lockedAtMsUtc = const Value.absent(),
+            Value<String?> lockId = const Value.absent(),
+            Value<String?> lastError = const Value.absent(),
+            required int updatedAtMsUtc,
+          }) =>
+              UploadTaskRowsCompanion.insert(
+            id: id,
+            assetId: assetId,
+            createdAtMsUtc: createdAtMsUtc,
+            status: status,
+            retryCount: retryCount,
+            nextRunAtMsUtc: nextRunAtMsUtc,
+            lockedAtMsUtc: lockedAtMsUtc,
+            lockId: lockId,
+            lastError: lastError,
+            updatedAtMsUtc: updatedAtMsUtc,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$UploadTaskRowsTableProcessedTableManager = ProcessedTableManager<
+    _$MediaWatchDatabase,
+    $UploadTaskRowsTable,
+    UploadTaskRow,
+    $$UploadTaskRowsTableFilterComposer,
+    $$UploadTaskRowsTableOrderingComposer,
+    $$UploadTaskRowsTableAnnotationComposer,
+    $$UploadTaskRowsTableCreateCompanionBuilder,
+    $$UploadTaskRowsTableUpdateCompanionBuilder,
+    (
+      UploadTaskRow,
+      BaseReferences<_$MediaWatchDatabase, $UploadTaskRowsTable, UploadTaskRow>
+    ),
+    UploadTaskRow,
+    PrefetchHooks Function()>;
+
+class $MediaWatchDatabaseManager {
+  final _$MediaWatchDatabase _db;
+  $MediaWatchDatabaseManager(this._db);
+  $$AppMetaTableTableManager get appMeta =>
+      $$AppMetaTableTableManager(_db, _db.appMeta);
+  $$MediaStatesTableTableManager get mediaStates =>
+      $$MediaStatesTableTableManager(_db, _db.mediaStates);
+  $$UploadTaskRowsTableTableManager get uploadTaskRows =>
+      $$UploadTaskRowsTableTableManager(_db, _db.uploadTaskRows);
+}
