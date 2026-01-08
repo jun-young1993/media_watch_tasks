@@ -1,4 +1,4 @@
-/example
+/example/*
 !/example/lib/
 !/example/lib/*.dart
 !/example/pubspec.yaml
